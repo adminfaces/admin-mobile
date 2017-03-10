@@ -1,9 +1,7 @@
 package com.adminfaces.github.admin_app;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -53,6 +51,7 @@ public class AdminWebViewClient extends WebViewClient {
                     "application/xhtml+xml", "UTF-8", 30 * UrlCache.ONE_MINUTE);
             Log.d(getClass().getName(), "Pre fetching finished successfully!");*/
         }
+
     }
 
     @Override
@@ -61,6 +60,14 @@ public class AdminWebViewClient extends WebViewClient {
     }
 
 
+
+    private void runJS(String script) {
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            activity.getWebView().evaluateJavascript(script, null);
+        } else {
+            activity.getWebView().loadUrl(script);
+        }
+    }
 
 
 

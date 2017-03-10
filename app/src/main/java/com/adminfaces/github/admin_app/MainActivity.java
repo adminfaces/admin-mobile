@@ -2,27 +2,22 @@ package com.adminfaces.github.admin_app;
 
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.webkit.ConsoleMessage;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-
-import com.adminfaces.github.admin_app.R;
 
 public class MainActivity extends AppCompatActivity {
 
     private static ViewGroup webViewParentViewGroup = null;
     private WebView webView = null;
-    //private String context = "http://10.0.2.2:8080/showcase"; //localhost
-    private String context =  "http://adminfaces-rpestano.rhcloud.com/showcase/";
+    private String context = "http://10.0.2.2:8080/showcase"; //localhost
+    //private String context =  "http://adminfaces-rpestano.rhcloud.com/showcase/";
 
 
     @Override
@@ -49,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
             webSettings.setDomStorageEnabled(true);
             AdminWebViewClient webViewClient = new AdminWebViewClient(this);
             webView.setWebViewClient(webViewClient);
+            webView.setWebChromeClient(new WebChromeClient() {
+                @Override
+                public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+                    Log.d(getClass().getName(), consoleMessage.message() + " -- From line "
+                            + consoleMessage.lineNumber() + " of "
+                            + consoleMessage.sourceId());
+                    return super.onConsoleMessage(consoleMessage);
+                }
+            });
             webView.loadUrl(context+"/index.xhtml");
         }
 
@@ -72,5 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
     public String getContext() {
         return context;
+    }
+
+    public WebView getWebView() {
+        return webView;
     }
 }
