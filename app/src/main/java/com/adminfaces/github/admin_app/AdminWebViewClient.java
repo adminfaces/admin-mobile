@@ -49,10 +49,9 @@ public class AdminWebViewClient extends WebViewClient {
 
         //pre fetching (put some pages into cache on app startup, pages below should load faster
          if((activity.getContext()+"/index.xhtml").equals(url)){
-            this.urlCache.register(activity.getContext()+"/pages/components/messages.xhtml",
+            /*this.urlCache.register(activity.getContext()+"/pages/components/messages.xhtml",
                     "application/xhtml+xml", "UTF-8", 30 * UrlCache.ONE_MINUTE);
-            this.urlCache.load(activity.getContext()+"/pages/components/messages.xhtml");
-            Log.d(getClass().getName(), "Pre fetching finished successfully!");
+            Log.d(getClass().getName(), "Pre fetching finished successfully!");*/
         }
     }
 
