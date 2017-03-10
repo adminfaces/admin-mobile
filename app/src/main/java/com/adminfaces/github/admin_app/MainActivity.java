@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static ViewGroup webViewParentViewGroup = null;
     private WebView webView = null;
-    //private String context = "http://10.0.2.2:8080/showcase";
+    //private String context = "http://10.0.2.2:8080/showcase"; //localhost
     private String context =  "http://adminfaces-rpestano.rhcloud.com/showcase/";
 
 
