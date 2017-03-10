@@ -14,16 +14,16 @@ import android.webkit.WebViewClient;
 
 public class AdminWebViewClient extends WebViewClient {
 
-    private Activity activity = null;
+    private MainActivity activity = null;
 
     private UrlCache urlCache = null;
 
 
-    public AdminWebViewClient(Activity activity) {
+    public AdminWebViewClient(MainActivity activity) {
         this.activity = activity;
         this.urlCache = new UrlCache(activity);
-        this.urlCache.register("adminfaces-rpestano.rhcloud.com/showcase/index.xhtml",
-                "application/xhtml+xml", "UTF-8", 10 * UrlCache.ONE_MINUTE);
+        /*this.urlCache.register("adminfaces-rpestano.rhcloud.com/showcase/index.xhtml",
+                "application/xhtml+xml", "UTF-8", 10 * UrlCache.ONE_MINUTE);*/
     }
 
     /**
@@ -34,7 +34,7 @@ public class AdminWebViewClient extends WebViewClient {
      */
     @Override
     public boolean shouldOverrideUrlLoading(WebView webView, String url) {
-        if (url.indexOf("adminfaces-rpestano.rhcloud.com/showcase") > -1) {
+        if (url.indexOf(activity.getContext()) > -1) {
             return false;
         }
 
@@ -48,10 +48,10 @@ public class AdminWebViewClient extends WebViewClient {
         super.onPageFinished(view, url);
 
         //pre fetching (put some pages into cache on app startup, pages below should load faster
-         if("http://adminfaces-rpestano.rhcloud.com/showcase/index.xhtml".equals(url)){
-            this.urlCache.register("http://adminfaces-rpestano.rhcloud.com/showcase/pages/components/messages.xhtml",
+         if((activity.getContext()+"/index.xhtml").equals(url)){
+            this.urlCache.register(activity.getContext()+"/pages/components/messages.xhtml",
                     "application/xhtml+xml", "UTF-8", 30 * UrlCache.ONE_MINUTE);
-            this.urlCache.load("http://adminfaces-rpestano.rhcloud.com/showcase/pages/components/messages.xhtml");
+            this.urlCache.load(activity.getContext()+"/pages/components/messages.xhtml");
             Log.d(getClass().getName(), "Pre fetching finished successfully!");
         }
     }

@@ -89,7 +89,9 @@ public class UrlCache {
 
         CacheEntry cacheEntry = this.cacheEntries.get(url);
 
-        if (cacheEntry == null) return null;
+        if (cacheEntry == null) {
+            return null;//null means load the original resource instead of cached one
+        }
 
         File cachedFile = new File(this.rootDir.getPath() + File.separator + cacheEntry.fileName);
 

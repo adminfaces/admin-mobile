@@ -20,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
 
     private static ViewGroup webViewParentViewGroup = null;
     private WebView webView = null;
+    private String context = "10.0.2.2:8080/showcase";
+    //private String context =  "http://adminfaces-rpestano.rhcloud.com/showcase/";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +43,12 @@ public class MainActivity extends AppCompatActivity {
 
             webViewParentViewGroup = (ViewGroup) findViewById(R.id.firstViewGroup);
             webView = (WebView) findViewById(R.id.webview);
-
             WebSettings webSettings = webView.getSettings();
             webSettings.setJavaScriptEnabled(true);
-            webSettings.setJavaScriptEnabled(true);
             webSettings.setDomStorageEnabled(true);
-
             AdminWebViewClient webViewClient = new AdminWebViewClient(this);
             webView.setWebViewClient(webViewClient);
-            webView.loadUrl("http://adminfaces-rpestano.rhcloud.com/showcase/");
+            webView.loadUrl(context+"/index.xhtml");
         }
 
     }
@@ -69,5 +69,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-
+    public String getContext() {
+        return context;
+    }
 }
