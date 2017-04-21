@@ -12,4 +12,4 @@ The app is a proof of concept to check AdminFaces user experience in mobile apps
 * Larger icons on panel, dialog and messages;
 * Some components like growl, tabview and datatable are optimized for mobile devices;
 * Slideout menu +
-https://cloud.githubusercontent.com/assets/1592273/25071807/dd37121e-2296-11e7-855c-8f20b59dcf5f.gif
+image:https://cloud.githubusercontent.com/assets/1592273/25071807/dd37121e-2296-11e7-855c-8f20b59dcf5f.gif
