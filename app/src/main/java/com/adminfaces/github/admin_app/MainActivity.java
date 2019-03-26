@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private static ViewGroup webViewParentViewGroup = null;
     private static WebView webView = null;
     //private String context = "http://10.0.2.2:8080/showcase"; //localhost
-    private String context =  "http://admin-showcase-admin.1d35.starter-us-east-1.openshiftapps.com/showcase/";
+    private String context =  "https://adminfaces.github.io/admin-showcase/";
 
 
     @Override
